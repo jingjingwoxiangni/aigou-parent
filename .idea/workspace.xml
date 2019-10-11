@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed5e0a0-79eb-4265-986b-f14eafc88d51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aigou-config-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aigou-config-server/src/main/java/cn/itsource/aigou/ConfigServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aigou-config-server/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aigou-plat-parent/plat-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aigou-zuul/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aigou-zuul/src/main/java/cn/itsource/aigou/config/GlobalCorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aigou-plat-parent/plat-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/aigou-plat-parent/plat-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aigou-plat-parent/plat-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/aigou-plat-parent/plat-service/src/main/resources/application_bak.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aigou-zuul/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/aigou-zuul/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aigou-zuul/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/aigou-zuul/src/main/resources/application_bak.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aigou-plat-parent/plat-service/src/main/java/cn/itsource/aigou/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aigou-plat-parent/plat-service/src/main/java/cn/itsource/aigou/controller/LoginController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +44,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aigou-web-parent" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -154,12 +142,7 @@
       <serviceView>
         <option name="contentProportion" value="0.26700804" />
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@1458dba4" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -179,8 +162,29 @@
       <workItem from="1570517510912" duration="11166000" />
       <workItem from="1570583386076" duration="1528000" />
       <workItem from="1570593263983" duration="893000" />
-      <workItem from="1570602690850" duration="4697000" />
+      <workItem from="1570602690850" duration="5375000" />
+      <workItem from="1570608921556" duration="187000" />
+      <workItem from="1570692672581" duration="6628000" />
+      <workItem from="1570757907233" duration="233000" />
+      <workItem from="1570758424998" duration="597000" />
+      <workItem from="1570763580253" duration="3942000" />
+      <workItem from="1570780366278" duration="591000" />
     </task>
+    <task id="LOCAL-00001" summary="配置中心">
+      <created>1570607427985</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570607427985</updated>
+    </task>
+    <task id="LOCAL-00002" summary="配置中心">
+      <created>1570763747502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570763747503</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +195,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -199,5 +205,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="配置中心" />
+    <option name="LAST_COMMIT_MESSAGE" value="配置中心" />
   </component>
 </project>
