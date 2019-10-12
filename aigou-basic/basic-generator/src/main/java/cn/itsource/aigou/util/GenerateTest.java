@@ -34,6 +34,7 @@ public class GenerateTest {
         gc.setOutputDir(projectPath + rb.getString("outputDir"));
         gc.setAuthor(rb.getString("author"));
         gc.setOpen(false);
+        gc.setBaseResultMap(true);
         mpg.setGlobalConfig(gc);
 
 

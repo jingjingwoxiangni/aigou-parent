@@ -13,3 +13,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://root:root@localhost:8761/eureka/
+
+logging:
+  level:
+    cn.itsource.aigou: debug
