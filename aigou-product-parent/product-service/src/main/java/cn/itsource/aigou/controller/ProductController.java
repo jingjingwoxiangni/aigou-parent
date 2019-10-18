@@ -1,5 +1,6 @@
 package cn.itsource.aigou.controller;
 
+import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.service.IProductService;
 import cn.itsource.aigou.domain.Product;
 import cn.itsource.aigou.query.ProductQuery;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/product")
@@ -84,4 +86,39 @@ public class ProductController {
     {
         return productService.queryPage(query);
     }
+
+    /**
+     * 根据商品ID查询商品的显示属性
+     * @param productId
+     * @return
+     */
+    @GetMapping("/viewProperties/{productId}")
+    public List<Specification> getViewProperties(@PathVariable("productId") Long productId){
+        return productService.getViewProperties(productId);
+    }
+
+
+    @PostMapping("/updateViewProperties")
+    public AjaxResult updateViewProperties(@RequestParam("productId")Long productId,
+                                           @RequestBody List<Specification> viewProperties){
+        try {
+            productService.saveViewProperties(productId,viewProperties);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("保存失败！"+e.getMessage());
+        }
+    }
+
+    /**
+     * 根据商品ID查询商品的显示属性
+     * @param productId
+     * @return
+     */
+    @GetMapping("/skuProperties/{productId}")
+    public List<Specification> getSkuProperties(@PathVariable("productId") Long productId){
+        return productService.getSkuProperties(productId);
+    }
+
+
 }
