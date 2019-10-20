@@ -6,8 +6,11 @@ import cn.itsource.aigou.domain.Product;
 import cn.itsource.aigou.query.ProductQuery;
 import cn.itsource.aigou.util.AjaxResult;
 import cn.itsource.aigou.util.PageList;
+import cn.itsource.aigou.vo.SkusVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +22,8 @@ import java.util.Map;
 public class ProductController {
     @Autowired
     public IProductService productService;
+
+    //private Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     /**
     * 保存和修改公用的
@@ -118,6 +123,23 @@ public class ProductController {
     @GetMapping("/skuProperties/{productId}")
     public List<Specification> getSkuProperties(@PathVariable("productId") Long productId){
         return productService.getSkuProperties(productId);
+    }
+
+    /**
+     * 保存sku
+     * @param productId
+     * @param skusVo
+     * @return
+     */
+    @PostMapping("/updateSkuProperties")
+    public AjaxResult updateSkuProperties(@RequestParam("productId")Long productId,
+                                          @RequestBody SkusVo skusVo){
+        /*System.out.println(productId);
+        System.out.println(skusVo.getSkuProperties());
+        System.out.println(skusVo.getSkus());*/
+        productService.saveSkuProperties(productId,skusVo.getSkuProperties(),skusVo.getSkus());
+
+        return AjaxResult.me();
     }
 
 
