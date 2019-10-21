@@ -48,6 +48,34 @@
         where id = #{productId}
     </update>
 
+    <!--
+    批量上架
+    动态sql
+    foreach循环
+    collection 源
+    item 每次的元素
+    open 循环的结果以什么开始
+    close 循环的结果以什么结束
+    separator 每次遍历的元素之间的分隔符
+    -->
+    <update id="onSale">
+        update t_product
+        set onSaleTime=#{onSaleTime},state=1
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+    <!--批量下架-->
+    <update id="offSale">
+        update t_product
+        set offSaleTime=#{offSaleTime},state=0
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
     <select id="queryPage" resultMap="BaseResultMap">
         select p.*,pt.name typename,b.name brandname
         from t_product p
