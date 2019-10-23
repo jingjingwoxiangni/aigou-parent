@@ -5,6 +5,8 @@ import cn.itsource.aigou.client.StaticPageClient;
 import cn.itsource.aigou.domain.ProductType;
 import cn.itsource.aigou.mapper.ProductTypeMapper;
 import cn.itsource.aigou.service.IProductTypeService;
+import cn.itsource.aigou.util.StrUtils;
+import cn.itsource.aigou.vo.ProductTypeCrumbVo;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -14,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
@@ -34,6 +33,46 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     private RedisClient redisClient;
     @Autowired
     private StaticPageClient staticPageClient;
+
+    /**
+     * 加载类型面包屑
+     * @param productTypeId
+     * @return
+     */
+    @Override
+    public List<ProductTypeCrumbVo> loadTypeCrumb(Long productTypeId) {
+        //根据当前类型查询所有父级别的类型   path字段
+        //当前类型
+        ProductType currentType = baseMapper.selectById(productTypeId);
+        //path
+        String path = currentType.getPath();
+        //分割path
+        List<Long> ids = pathSplit(path);
+        //查询各个级别的类型
+        List<ProductType> productTypes = baseMapper.selectBatchIds(ids);
+        List<ProductTypeCrumbVo> result = new ArrayList<>();
+
+        //封装数据
+        ProductTypeCrumbVo vo = null;
+        for (ProductType productType : productTypes) {
+            vo = new ProductTypeCrumbVo();
+            vo.setCurrentType(productType);
+            //其他同级别的类型
+            List<ProductType> otherTypes = baseMapper.selectList(new QueryWrapper<ProductType>().eq("pid", productType.getPid()));
+            vo.setOtherTypes(otherTypes);
+            result.add(vo);
+        }
+        return result;
+    }
+
+    private List<Long> pathSplit(String path) {
+        String[] idArr = path.substring(1).split("\\.");
+        List<Long> idList = new ArrayList<>();
+        for (String idStr : idArr) {
+            idList.add(Long.parseLong(idStr));
+        }
+        return idList;
+    }
 
     /**
      * 静态化商城首页
@@ -53,6 +92,7 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         model.put("staticRoot","D:\\ymsd\\aigou-parent\\aigou-product-parent\\product-service\\src\\main\\resources\\");
         staticPageClient.generateStaticPage(templatePath,targetPath,model);
     }
+
 
     /**
      * 加载类型树
@@ -204,4 +244,6 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         //生成home.html静态页面
         genHomePage();
     }
+
+
 }

@@ -1,5 +1,6 @@
 package cn.itsource.aigou.controller;
 
+import cn.itsource.aigou.domain.ProductParam;
 import cn.itsource.aigou.domain.Specification;
 import cn.itsource.aigou.service.IProductService;
 import cn.itsource.aigou.domain.Product;
@@ -8,15 +9,10 @@ import cn.itsource.aigou.util.AjaxResult;
 import cn.itsource.aigou.util.PageList;
 import cn.itsource.aigou.util.StrUtils;
 import cn.itsource.aigou.vo.SkusVo;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/product")
@@ -175,6 +171,16 @@ public class ProductController {
             e.printStackTrace();
             return AjaxResult.me().setSuccess(false).setMessage("下架失败!"+e.getMessage());
         }
+    }
+
+    /**
+     * 在线商城搜索商品
+     * @param param
+     * @return
+     */
+    @PostMapping("/queryOnSale")
+    public PageList<Product> queryOnSale(@RequestBody ProductParam param){
+        return productService.queryOnSale(param);
     }
 
 
